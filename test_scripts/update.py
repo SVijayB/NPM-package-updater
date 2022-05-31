@@ -1,5 +1,6 @@
 import urllib.request, json
-from src.components.send_pr import send_pr
+from pprint import pprint
+from test_scripts.send_pr import send_pr
 import os
 
 # Method to update the packages if outdated.
@@ -26,14 +27,7 @@ def update_packages(json_data, dependency, version):
                 "integrity": pkg_info["dist"]["integrity"],
                 "requires": pkg_info["dependencies"],
             }
-
-            # For package-lock.json file
-            with urllib.request.urlopen(
-                "https://raw.githubusercontent.com/"
-                + json_data[data][1]
-                + "/main/package-lock.json"
-            ) as url:
-                package_lock_data = json.loads(url.read().decode())
+            f = open("test\package-lock.json")
             package_lock_data = json.load(f)
             package_lock_data["packages"][""]["dependencies"][dependency] = (
                 package_lock_data["packages"][""]["dependencies"][dependency][:1]
@@ -41,14 +35,16 @@ def update_packages(json_data, dependency, version):
             )
             package_lock_data["packages"][f"node_modules/{dependency}"] = node_modules
             package_lock_data["dependencies"][dependency] = direct_tag
+            print(package_lock_data["packages"]["node_modules/axios"])
+
+            # Saving the new package-lock.json
+            with open("test\package-lock.json", "w") as outfile:
+                json.dump(package_lock_data, outfile, indent=4)
+                outfile.write("\n")
 
             # For package.json file
-            with urllib.request.urlopen(
-                "https://raw.githubusercontent.com/"
-                + json_data[data][1]
-                + "/main/package.json"
-            ) as url:
-                package_data = json.loads(url.read().decode())
+            f = open("test\package.json")
+            package_data = json.load(f)
             try:
                 package_data["packages"]["dependencies"][dependency] = (
                     package_data["packages"]["dependencies"][dependency][:1] + version
@@ -57,11 +53,30 @@ def update_packages(json_data, dependency, version):
                 package_data["dependencies"][dependency] = (
                     package_data["dependencies"][dependency][:1] + version
                 )
+            with open("test\package.json", "w") as outfile:
+                json.dump(package_data, outfile, indent=4)
+                outfile.write("\n")
+            send_pr(json_data[data][1], package_lock_data, package_data)
 
-            pr_link = send_pr(
-                json_data[data][1], (package_lock_data + "\n"), (package_data + "\n")
-            )
-            json_data[data][4] = pr_link
-        else:
-            json_data[data][4] = "No update required"
-    return json_data
+
+json_data = {
+    "obj_1": [
+        "dyte-react-sample-app",
+        "https://github.com/dyte-in/react-sample-app",
+        "0.24.0",
+        "true",
+    ],
+    "obj_2": [
+        "dyte-js-sample-app",
+        "https://github.com/dyte-in/javascript-sample-app",
+        "0.21.1",
+        "false",
+    ],
+    "obj_3": [
+        "dyte-sample-app-backend",
+        "https://github.com/dyte-in/backend-sample-app",
+        "0.23.0",
+        "true",
+    ],
+}
+update_packages(json_data, "axios", "0.23.0")
