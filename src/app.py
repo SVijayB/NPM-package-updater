@@ -18,7 +18,14 @@ def create_app():
 
     @app.route("/", methods=["GET"])
     def index():
-        return "<h3>API running successfully!<h3>"
+        return """<html>
+                    <head>
+                        <title>Dyte Internship Assignment</title>
+                    </head>
+                    <body>
+                        <h3>API running successfully!<h3>
+                    </body>
+                </html>"""
 
     @app.route("/favicon.ico")
     def favicon():
