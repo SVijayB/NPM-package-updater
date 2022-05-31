@@ -38,6 +38,6 @@ def verify(file_location, dependency, version, update):
 
     # Checking if update is needed.
     if update == True:
-        update_packages(json_data)
+        update_packages(json_data, dependency, version)
     os.remove(file_location)
     return view_builder(json_data, update)
