@@ -1,7 +1,6 @@
 from flask import Flask, current_app, jsonify, request, Blueprint
 from werkzeug.utils import secure_filename
 from src.components.verify import verify
-import csv
 import os
 
 UPLOAD_FOLDER = "temp"
