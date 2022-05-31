@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify, send_from_directory, redirect
 from src.routes import api_blueprint
 import os
 
-
+# Creating the flask application.
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.url_map.strict_slashes = False
