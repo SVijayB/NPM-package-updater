@@ -48,26 +48,23 @@ def update_packages(json_data, dependency, version):
             ) as url:
                 package_data = json.loads(url.read().decode())
             try:
+                old_version = package_data["packages"]["dependencies"][dependency]
                 package_data["packages"]["dependencies"][dependency] = (
                     package_data["packages"]["dependencies"][dependency][:1] + version
                 )
             except:
+                old_version = package_data["dependencies"][dependency]
                 package_data["dependencies"][dependency] = (
                     package_data["dependencies"][dependency][:1] + version
                 )
-            try:
                 pr_link = send_pr(
-                    json_data[data][1], (package_lock_data), (package_data)
+                    json_data[data][1],
+                    (package_lock_data),
+                    (package_data),
+                    old_version,
+                    version,
+                    dependency,
                 )
-            except:
-                return """ERROR: There seems to be a problem with PR creation. Possible reasons for failure are:<br>
-                1. Your GitHub token was not provided.<br>
-                2. You are not connected to the internet.<br>
-                3. Repository links provided are broken.<br>
-                4. PR already exists.<br>
-                
-                Please look into the above mentioned errors and try again.
-            """
             json_data[data].append(pr_link)
         else:
             json_data[data].append("No update required")

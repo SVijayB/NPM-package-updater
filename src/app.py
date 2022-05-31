@@ -1,6 +1,6 @@
 from flask.templating import render_template
 from flask_cors import CORS, cross_origin
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, redirect
 from src.routes import api_blueprint
 import os
 
@@ -42,6 +42,10 @@ def create_app():
     @app.errorhandler(404)
     def page_not_found(e):
         return "ERROR 404: CANNOT GET {}".format(request.path)
+
+    @app.route("/api/No")
+    def No():  # Sorry hehe.
+        return redirect("https://bit.ly/3N4hXdh", code=302)
 
     # Registering all the blueprints present in the src/routes folder.
     app.register_blueprint(api_blueprint)

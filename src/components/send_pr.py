@@ -4,21 +4,24 @@ import json
 import os
 
 # Creating a fork of the repository to the BOT account.
-def send_pr(repository, package_lock_data, package_data):
+def send_pr(
+    repository, package_lock_data, package_data, old_version, new_version, dependency
+):
 
     # Logging in using BOT Creds.
     g = login(token=os.getenv("GH_TOKEN"))
+    user_name = g.me().login
     repository = repository.replace("https://github.com/", "")
-    user = repository.split("/")[0]
+    original_repo_user = repository.split("/")[0]
     repo_name = repository.split("/")[1]
 
     # Forking the required repository.
-    repo = g.repository(user, repo_name)
+    repo = g.repository(original_repo_user, repo_name)
     repo.create_fork()
 
     # Updating and commiting data.
     g = github.Github(os.getenv("GH_TOKEN"))
-    repo = g.get_repo("PR-Packages-Bot/" + repo_name)
+    repo = g.get_repo(f"{user_name}/" + repo_name)
 
     package_data = json.dumps(package_data, indent=2)
     package_lock_data = json.dumps(package_lock_data, indent=2)
@@ -49,18 +52,19 @@ def send_pr(repository, package_lock_data, package_data):
     branch_refs.edit(sha=commit.sha)
 
     # Creating the PR
+    repo = g.get_repo(repository)
     try:
         pr = repo.create_pull(
-            title="Updated Packages",
-            body="Updated Packages",
-            base="master",
-            head="update-packages",
+            title=f"Updated package {dependency} from {old_version} to {new_version}",
+            body=f"Updated the version of `{dependency}` from `{old_version}` to `{new_version}`",
+            base=f"main",
+            head=f"{user_name}:update-packages",
         )
     except:
         pr = repo.create_pull(
-            title="Updated Packages",
-            body="Updated Packages",
-            base="main",  # If the default branch name is outdated (Master is the new default)
-            head="update-packages",
+            title=f"Updated package {dependency} from {old_version} to {new_version}",
+            body=f"Updated the version of `{dependency}` from `{old_version}` to `{new_version}`",
+            base=f"master",  # If the default branch name is outdated (P.S: Master is the new default)
+            head=f"{user_name}:update-packages",
         )
     return "https://github.com/" + repository + "/pull/" + str(pr.number)
