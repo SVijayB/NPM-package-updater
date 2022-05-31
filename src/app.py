@@ -17,6 +17,7 @@ def create_app():
     CORS(app, resources={"/*": api_cors_config})
     app.secret_key = os.getenv("API_KEY")
 
+    # Initial Render Page.
     @app.route("/", methods=["GET"])
     def index():
         return """<html>
@@ -28,6 +29,7 @@ def create_app():
                     </body>
                 </html>"""
 
+    # Adding Dyte logo as a favicon.
     @app.route("/favicon.ico")
     def favicon():
         return send_from_directory(
@@ -36,9 +38,11 @@ def create_app():
             mimetype="image/vnd.microsoft.icon",
         )
 
+    # Error handling for pages not present.
     @app.errorhandler(404)
     def page_not_found(e):
         return "ERROR 404: CANNOT GET {}".format(request.path)
 
+    # Registering all the blueprints present in the src/routes folder.
     app.register_blueprint(api_blueprint)
     return app
