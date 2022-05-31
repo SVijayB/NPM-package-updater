@@ -40,4 +40,7 @@ def verify(file_location, dependency, version, update):
     if update == True:
         json_data = update_packages(json_data, dependency, version)
     os.remove(file_location)
-    return view_builder(json_data, update)
+    try:
+        return view_builder(json_data, update)
+    except:
+        return json_data

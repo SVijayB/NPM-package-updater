@@ -45,17 +45,11 @@ def verification():
         if file and allowed_file:
             filename = secure_filename(filename)
             file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename))
-            try:
-                if request.form["submit"] == "Update":
-                    update = True
-                result = verify(
-                    f"{UPLOAD_FOLDER}/{filename}", dependency, version, update
-                )
-            except:
-                return (
-                    "ERROR: Make sure to follow exact structure as provided in examples/ebDetails.csv",
-                    400,
-                )
+            if request.form["submit"] == "Update":
+                update = True
+            else:
+                update = False
+            result = verify(f"{UPLOAD_FOLDER}/{filename}", dependency, version, update)
             return result
         else:
             return ("ERROR: Only CSV files are allowed", 400)

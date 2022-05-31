@@ -28,13 +28,13 @@ def update_packages(json_data, dependency, version):
             }
 
             # For package-lock.json file
+            repo_name = json_data[data][1].replace("https://github.com/", "")
             with urllib.request.urlopen(
                 "https://raw.githubusercontent.com/"
-                + json_data[data][1]
+                + repo_name
                 + "/main/package-lock.json"
             ) as url:
                 package_lock_data = json.loads(url.read().decode())
-            package_lock_data = json.load(f)
             package_lock_data["packages"][""]["dependencies"][dependency] = (
                 package_lock_data["packages"][""]["dependencies"][dependency][:1]
                 + version
@@ -44,9 +44,7 @@ def update_packages(json_data, dependency, version):
 
             # For package.json file
             with urllib.request.urlopen(
-                "https://raw.githubusercontent.com/"
-                + json_data[data][1]
-                + "/main/package.json"
+                "https://raw.githubusercontent.com/" + repo_name + "/main/package.json"
             ) as url:
                 package_data = json.loads(url.read().decode())
             try:
@@ -57,11 +55,20 @@ def update_packages(json_data, dependency, version):
                 package_data["dependencies"][dependency] = (
                     package_data["dependencies"][dependency][:1] + version
                 )
-
-            pr_link = send_pr(
-                json_data[data][1], (package_lock_data + "\n"), (package_data + "\n")
-            )
-            json_data[data][4] = pr_link
+            try:
+                pr_link = send_pr(
+                    json_data[data][1], (package_lock_data), (package_data)
+                )
+            except:
+                return """ERROR: There seems to be a problem with PR creation. Possible reasons for failure are:<br>
+                1. Your GitHub token was not provided.<br>
+                2. You are not connected to the internet.<br>
+                3. Repository links provided are broken.<br>
+                4. PR already exists.<br>
+                
+                Please look into the above mentioned errors and try again.
+            """
+            json_data[data].append(pr_link)
         else:
-            json_data[data][4] = "No update required"
+            json_data[data].append("No update required")
     return json_data

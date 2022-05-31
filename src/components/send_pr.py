@@ -63,4 +63,4 @@ def send_pr(repository, package_lock_data, package_data):
             base="main",  # If the default branch name is outdated (Master is the new default)
             head="update-packages",
         )
-    return repository + "/pull/" + str(pr.number)
+    return "https://github.com/" + repository + "/pull/" + str(pr.number)
