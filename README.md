@@ -42,7 +42,7 @@
     <a href="https://github.com/dyte-submissions/dyte-vit-2022-SVijayB"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/dyte-submissions/dyte-vit-2022-SVijayB">View Demo</a>
+    <a href="https://dyte-internship.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/issues">Report Bug</a>
     ·
@@ -81,10 +81,8 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://dyte-internship.herokuapp.com/)
 
-Given a list of Github repositories, assuming all of them are node js projects with a package.json and package-lock.json in the root, \
-and the name and version of a dependency is provided, the goal would be to tell if the version present is higher or equal to provided version and if \ lower, the user must have the option to update the dependency.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+Given a list of Github repositories, assuming all of them are node js projects with a package.json and package-lock.json in the root,
+and the name and version of a dependency is provided, the goal would be to tell if the version present is higher or equal to provided version and if lower, the user must have the option to update the dependency.
 
 ### Built With
 
@@ -123,7 +121,7 @@ Once you have the prerequesis installed, we can proceed with the installation of
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repository
     ```sh
     git clone https://github.com/dyte-submissions/dyte-vit-2022-SVijayB.git
     ```
@@ -146,6 +144,7 @@ Once you have the prerequesis installed, we can proceed with the installation of
     ```
 
 For step 5, API_TOKEN can be any string of characters that you want to use in order to access the API safely.
+
 To create a GitHub token, check out the [GitHub API docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -158,14 +157,20 @@ Alright, the project is all setup. How do we run it? Simple, head over to the `m
 
 Your server should be up and running.
 
-    ```sh
-    python main.py
-    ```
+```sh
+python main.py
+```
 
-Head over to your the browser and navigate to the following URL: [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+Head over to your the browser and navigate to the following URL: [http://127.0.0.1:5000/](http://127.0.0.1:5000/). \
 The application should be running there.
 
-For more documentation and usage examples, check out the [docs](http://127.0.0.1:5000/api).
+For more documentation and usage examples, check out the [docs](https://dyte-internship.herokuapp.com/api/).
+
+If you want to test out the application without the hassle of setting up the server locally, you can test out the version deployed on cloud [here](https://dyte-internship.herokuapp.com/api/verify?key=51A3AF9D1148C7CB29138A9DD4CD1C67).
+
+If you click on the above link, you can notice that an API key is already prodvided. Similarly, a GitHub Bot account was also created for test purposes. Feel free to test out the platform :)
+
+If you have any questions, feel free to contact me at [LinkedIn](https://www.linkedin.com/in/svijayb/) or [GitHub](https://github.com/SVijayB)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

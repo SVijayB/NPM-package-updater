@@ -26,6 +26,7 @@ def create_app():
                     </head>
                     <body>
                         <h3>API running successfully!<h3>
+                        <h4>Head over to the /api endpoint for more documentation.</h4>
                     </body>
                 </html>"""
 
