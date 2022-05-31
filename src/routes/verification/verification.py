@@ -7,11 +7,12 @@ UPLOAD_FOLDER = "temp"
 ALLOWED_EXTENSIONS = {"csv"}
 verification_bp = Blueprint("verification", __name__, url_prefix="/verify")
 
-# Verification API endpoint.
+# Verification API endpoint, used to validate inputs and pass them on to the right functions.
 @verification_bp.route("/", methods=["GET", "POST"])
 def verification():
     current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
     if request.method == "POST":
+
         # Check if API ky is present and verify if it's the correct one.
         key = request.args.get("key")
         if not key == os.getenv("API_KEY"):

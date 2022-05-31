@@ -19,7 +19,7 @@ def send_pr(
     repo = g.repository(original_repo_user, repo_name)
     repo.create_fork()
 
-    # Updating and commiting data.
+    # Updating and commiting data using git blobs.
     g = github.Github(os.getenv("GH_TOKEN"))
     repo = g.get_repo(f"{user_name}/" + repo_name)
 
@@ -37,7 +37,7 @@ def send_pr(
 
     head_sha = repo.get_branch("master").commit.sha
 
-    # Creating a branch
+    # Creating a branch for cleaner PR.
     try:
         branch = repo.create_git_ref(ref=f"refs/heads/update-packages", sha=head_sha)
     except:
@@ -51,7 +51,7 @@ def send_pr(
     branch_refs = repo.get_git_ref("heads/update-packages")
     branch_refs.edit(sha=commit.sha)
 
-    # Creating the PR
+    # Creating the Pull Request.
     repo = g.get_repo(repository)
     try:
         pr = repo.create_pull(
@@ -67,4 +67,6 @@ def send_pr(
             base=f"master",  # If the default branch name is outdated (P.S: Master is the new default)
             head=f"{user_name}:update-packages",
         )
-    return "https://github.com/" + repository + "/pull/" + str(pr.number)
+    return (
+        "https://github.com/" + repository + "/pull/" + str(pr.number)
+    )  # Returns the link of the pull request.

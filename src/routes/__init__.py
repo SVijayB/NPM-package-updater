@@ -1,10 +1,11 @@
 from flask import Blueprint
 from src.routes.verification import verification
 
+# Hub for all the various routes that will be added to the app.
 api_blueprint = Blueprint("API", __name__, url_prefix="/api/")
 api_blueprint.register_blueprint(verification.verification_bp)
 
-
+# Main blueprint for the API route.
 @api_blueprint.route("/", methods=["GET"])
 def get_data():
     return """

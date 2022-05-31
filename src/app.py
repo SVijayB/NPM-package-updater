@@ -8,6 +8,8 @@ import os
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.url_map.strict_slashes = False
+
+    # Setting up cors policy, in case we plan to scale up and provide a decent react frontend?
     api_cors_config = {
         "origins": [
             "*",
@@ -25,8 +27,8 @@ def create_app():
                         <title>Dyte Internship Assignment</title>
                     </head>
                     <body>
-                        <h3>API running successfully!<h3>
-                        <h4>Head over to the /api endpoint for more documentation.</h4>
+                        <h2>API running successfully!<h2>
+                        <h3>Head over to the /api endpoint for more documentation.</h3>
                     </body>
                 </html>"""
 
@@ -46,7 +48,9 @@ def create_app():
 
     @app.route("/api/No")
     def No():  # Sorry hehe.
-        return redirect("https://bit.ly/3N4hXdh", code=302)
+        return redirect(
+            "https://bit.ly/3N4hXdh", code=302
+        )  # Ensuring the URL is not obvious XD.
 
     # Registering all the blueprints present in the src/routes folder.
     app.register_blueprint(api_blueprint)

@@ -52,8 +52,10 @@ def view_builder(json_data, update):
                 <title> Result from Query </title>
                 <style>
                 table, th, td \u007b
-                    border: 1px solid black;
-                    \u007d
+                        border: 1px solid black;
+                        padding: 15px;
+                        \u007d
+                    tr:hover \u007bbackground-color: #D6EEEE;\u007d
                 </style>
             </head>
             <body>

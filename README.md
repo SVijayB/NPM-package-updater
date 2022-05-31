@@ -1,13 +1,6 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7947793&assignment_repo_type=AssignmentRepo)
 
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -68,10 +61,10 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -88,6 +81,7 @@ and the name and version of a dependency is provided, the goal would be to tell 
 
 -   [Python](https://www.python.org/)
 -   [Flask](https://flask.palletsprojects.com/en/2.1.x/)
+-   [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 -   [GitHub API](https://docs.github.com/en/rest)
 
 The application is also currently deployed on the cloud at [Heroku](https://www.heroku.com/).
@@ -125,27 +119,27 @@ Once you have the prerequesis installed, we can proceed with the installation of
     ```sh
     git clone https://github.com/dyte-submissions/dyte-vit-2022-SVijayB.git
     ```
-2. Install Python Packages
-    ```sh
-    pip install -r requirements.txt
-    ```
-3. Create a virtual environment
+2. Create a virtual environment
     ```sh
     python3 -m venv venv
     ```
-4. Activate the virtual environment
+3. Activate the virtual environment
     ```sh
     source venv/bin/activate
     ```
-5. Create an .env file with the following variables
+4. Install Python Packages
     ```sh
+    pip install -r requirements.txt
+    ```
+5. Create a .env file with the following variables
+    ```txt
     API_TOKEN = <your-api-token>
     GH_TOKEN = <your-github-token>
     ```
 
 For step 5, API_TOKEN can be any string of characters that you want to use in order to access the API safely.
 
-To create a GitHub token, check out the [GitHub API docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+To create a GitHub token, check out their [GitHub docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -155,11 +149,11 @@ To create a GitHub token, check out the [GitHub API docs](https://docs.github.co
 
 Alright, the project is all setup. How do we run it? Simple, head over to the `main.py` file in the root of the project and run it.
 
-Your server should be up and running.
-
 ```sh
-python main.py
+py main.py
 ```
+
+Your server should be up and running.
 
 Head over to your the browser and navigate to the following URL: [http://127.0.0.1:5000/](http://127.0.0.1:5000/). \
 The application should be running there.
@@ -170,11 +164,45 @@ If you want to test out the application without the hassle of setting up the ser
 
 If you click on the above link, you can notice that an API key is already prodvided. Similarly, a GitHub Bot account was also created for test purposes. Feel free to test out the platform :)
 
-If you have any questions, feel free to contact me at [LinkedIn](https://www.linkedin.com/in/svijayb/) or [GitHub](https://github.com/SVijayB)
+If you have any questions, you can contact me anytime at [LinkedIn](https://www.linkedin.com/in/svijayb/) or [GitHub](https://github.com/SVijayB)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Screenshots
+
+![Data-Entry](assets/data_entry.png)
+
+![Endpoint-docs](assets/endpoint_docs.png)
+
+![Result](assets/update_packages.png)
+
+![PR-Generated](assets/pr_generated.png)
+
+![Git-Diff](assets/git_diff_ss.png)
+
 <!-- CONTRIBUTING -->
+
+## Why pick my work over others?
+
+-   The entire project was done in API space, which means it can be scalled up easily.
+
+-   Right now, the project displays the list in a tabular form for GUI purposes and for the ease of evaluating the assignmnet. However, it can easily be updated to return JSON data that can provide more insight for large inputs by simply removing the `view_builder` function and returning `json_data`.
+
+![json-data](assets/json_data.png)
+
+-   The project has been deployed to the cloud for ease of evaluation.
+
+-   Documented and well-written code. Formatted using the black formatter throughout the source-code.
+
+-   API key was setup for safer access to the API.
+
+-   README.md file contains all the required information and documentation.
+
+-   The Flask app is extremely well modularized for ease of understanding and maintenance.
+
+-   Test scripts are also present in the `test_scripts` directory for ease of testing individual functions.
+
+-   Atomic commit messages for better tracking of changes and for easier code review.
 
 ## Contributing
 
@@ -203,7 +231,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-S Vijay Balaji - [@linkedIn](linkedin.com/in/svijayb) - vijaykumar.19bce7571@vitap.ac.in
+S Vijay Balaji - [linkedIn](linkedin.com/in/svijayb) - vijaykumar.19bce7571@vitap.ac.in
 
 Project Link: [https://github.com/dyte-submissions/dyte-vit-2022-SVijayB](https://github.com/dyte-submissions/dyte-vit-2022-SVijayB)
 
@@ -224,4 +252,4 @@ Project Link: [https://github.com/dyte-submissions/dyte-vit-2022-SVijayB](https:
 [license-url]: https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/SVijayB
-[product-screenshot]: assets/screenshot.png
+[product-screenshot]: assets/pr_generated.png
