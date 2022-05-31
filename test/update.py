@@ -1,4 +1,5 @@
 import urllib.request, json
+from pprint import pprint
 import os
 
 # Method to update the packages if outdated.
@@ -13,21 +14,44 @@ def update_packages(json_data, dependency, version):
 
             # For the Node_modules/dependency
             node_modules = {
-                "new_version": pkj_info["version"],
+                "version": pkj_info["version"],
                 "resolved": pkj_info["dist"]["tarball"],
                 "integrity": pkj_info["dist"]["integrity"],
                 "dependencies": pkj_info["dependencies"],
             }
             # For the direct dependency change.
             direct_tag = {
-                "new_version": pkj_info["version"],
+                "version": pkj_info["version"],
                 "resolved": pkj_info["dist"]["tarball"],
                 "integrity": pkj_info["dist"]["integrity"],
                 "requires": pkj_info["dependencies"],
             }
             f = open("test\package-lock.json")
             data = json.load(f)
-            print(data)
+            data["packages"][""]["dependencies"][dependency] = (
+                data["packages"][""]["dependencies"][dependency][:1] + version
+            )
+            data["packages"][f"node_modules/{dependency}"] = node_modules
+            data["dependencies"][dependency] = direct_tag
+            print(data["packages"]["node_modules/axios"])
+
+            # Saving the new package-lock.json
+            with open("test\package-lock.json", "w") as outfile:
+                json.dump(data, outfile, indent=4)
+
+            # For package.json file
+            f = open("test\package.json")
+            data = json.load(f)
+            try:
+                data["packages"]["dependencies"][dependency] = (
+                    data["packages"]["dependencies"][dependency][:1] + version
+                )
+            except:
+                data["dependencies"][dependency] = (
+                    data["dependencies"][dependency][:1] + version
+                )
+            with open("test\package.json", "w") as outfile:
+                json.dump(data, outfile, indent=4)
 
 
 json_data = {
