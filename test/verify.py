@@ -33,6 +33,43 @@ def verify(file_location, dependency, version):
             json_data[obj].append("NULL", "false")
 
     pprint.pprint(json_data)
+    print(view_builder(json_data))
+
+
+def view_builder(json_data):
+    table_data = ""
+    for row in json_data:
+        table_data = (
+            table_data
+            + f"""
+                        <tr>
+                            <td> {json_data[row][0]} </td>
+                            <td> {json_data[row][1]} </td>
+                            <td> {json_data[row][3]} </td>
+                            <td> {json_data[row][2]} </td>
+                        </tr>"""
+        )
+    view = f"""
+        <html>
+            <head><title> Result from Query </title></head>
+            <body>
+                <h2> Result from Query </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Name </th>
+                            <th> Repo </th>
+                            <th> Version </th>
+                            <th> Version_Satisfied </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {table_data}
+                    </tbody>
+                </table>
+            </body>
+        """
+    return view
 
 
 verify("example/verify_file.csv", "axios", "0.23.0")
