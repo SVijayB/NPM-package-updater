@@ -23,7 +23,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/dyte-submissions/dyte-vit-2022-SVijayB">
+  <a href="https://github.com/SVijayB/Package-updater">
     <img src="assets/logo.png" alt="Logo">
   </a>
 
@@ -32,14 +32,14 @@
   <p align="center">
     Automate updating Node.JS packages and dependencies!
     <br />
-    <a href="https://github.com/dyte-submissions/dyte-vit-2022-SVijayB"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/SVijayB/Package-updater"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://dyte-internship.herokuapp.com/">View Demo</a>
+    <a href="https://github.com/SVijayB/Package-updater">View Demo</a>
     ·
-    <a href="https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/issues">Report Bug</a>
+    <a href="https://github.com/SVijayB/Package-updater/issues">Report Bug</a>
     ·
-    <a href="https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/issues">Request Feature</a>
+    <a href="https://github.com/SVijayB/Package-updater/issues">Request Feature</a>
   </p>
 </div>
 
@@ -72,7 +72,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://dyte-internship.herokuapp.com/)
+[![Product Name Screen Shot][product-screenshot]](https://github.com/SVijayB/Package-updater)
 
 Given a list of Github repositories, assuming all of them are node js projects with a package.json and package-lock.json in the root,
 and the name and version of a dependency is provided, the goal would be to tell if the version present is higher or equal to provided version and if lower, the user must have the option to update the dependency.
@@ -117,7 +117,7 @@ Once you have the prerequesis installed, we can proceed with the installation of
 
 1. Clone the repository
     ```sh
-    git clone https://github.com/dyte-submissions/dyte-vit-2022-SVijayB.git
+    git clone https://github.com/SVijayB/Package-updater.git
     ```
 2. Create a virtual environment
     ```sh
@@ -158,9 +158,9 @@ Your server should be up and running.
 Head over to your the browser and navigate to the following URL: [http://127.0.0.1:5000/](http://127.0.0.1:5000/). \
 The application should be running there.
 
-For more documentation and usage examples, check out the [docs](https://dyte-internship.herokuapp.com/api/).
+For more documentation and usage examples, check out the docs endpoint at `http://127.0.0.1:5000/docs`.
 
-If you want to test out the application without the hassle of setting up the server locally, you can test out the version deployed on cloud [here](https://dyte-internship.herokuapp.com/api/verify?key=51A3AF9D1148C7CB29138A9DD4CD1C67).
+If you want to test out the application without the hassle of setting up the server locally, you can test out the version deployed on cloud [here](http://127.0.0.1:5000/api/verify?key=KEY).
 
 If you click on the above link, you can notice that an API key is already prodvided. Similarly, a GitHub Bot account was also created for test purposes. Feel free to test out the platform :)
 
@@ -182,17 +182,13 @@ If you have any questions, you can contact me anytime at [LinkedIn](https://www.
 
 <!-- CONTRIBUTING -->
 
-## Why pick my work over others?
+## What are the extra features?
 
 -   The entire project was done in API space, which means it can be scalled up easily.
 
 -   Right now, the project displays the list in a tabular form for GUI purposes and for the ease of evaluating the assignmnet. However, it can easily be updated to return JSON data that can provide more insight for large inputs by simply removing the `view_builder` function and returning `json_data`.
 
 ![json-data](assets/json_data.png)
-
--   The project has been deployed to the cloud for ease of evaluation.
-
--   Documented and well-written code. Formatted using the black formatter throughout the source-code.
 
 -   API key was setup for safer access to the API.
 
@@ -231,25 +227,25 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-S Vijay Balaji - [linkedIn](linkedin.com/in/svijayb) - vijaykumar.19bce7571@vitap.ac.in
+S Vijay Balaji - [linkedIn](linkedin.com/in/svijayb) - svijayb.dev@gmail.com
 
-Project Link: [https://github.com/dyte-submissions/dyte-vit-2022-SVijayB](https://github.com/dyte-submissions/dyte-vit-2022-SVijayB)
+Project Link: [https://github.com/SVijayB/Package-updater](https://github.com/SVijayB/Package-updater)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/dyte-submissions/dyte-vit-2022-SVijayB.svg?style=for-the-badge
-[contributors-url]: https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/dyte-submissions/dyte-vit-2022-SVijayB.svg?style=for-the-badge
-[forks-url]: https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/network/members
-[stars-shield]: https://img.shields.io/github/stars/dyte-submissions/dyte-vit-2022-SVijayB.svg?style=for-the-badge
-[stars-url]: https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/stargazers
-[issues-shield]: https://img.shields.io/github/issues/dyte-submissions/dyte-vit-2022-SVijayB.svg?style=for-the-badge
-[issues-url]: https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/issues
-[license-shield]: https://img.shields.io/github/license/dyte-submissions/dyte-vit-2022-SVijayB.svg?style=for-the-badge
-[license-url]: https://github.com/dyte-submissions/dyte-vit-2022-SVijayB/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/https://github.com/SVijayB/Package-updater.svg?style=for-the-badge
+[contributors-url]: https://github.com/https://github.com/SVijayB/Package-updater/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/https://github.com/SVijayB/Package-updater.svg?style=for-the-badge
+[forks-url]: https://github.com/https://github.com/SVijayB/Package-updater/network/members
+[stars-shield]: https://img.shields.io/github/stars/https://github.com/SVijayB/Package-updater.svg?style=for-the-badge
+[stars-url]: https://github.com/https://github.com/SVijayB/Package-updater/stargazers
+[issues-shield]: https://img.shields.io/github/issues/https://github.com/SVijayB/Package-updater.svg?style=for-the-badge
+[issues-url]: https://github.com/https://github.com/SVijayB/Package-updater/issues
+[license-shield]: https://img.shields.io/github/license/https://github.com/SVijayB/Package-updater.svg?style=for-the-badge
+[license-url]: https://github.com/https://github.com/SVijayB/Package-updater/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/SVijayB
 [product-screenshot]: assets/pr_generated.png
